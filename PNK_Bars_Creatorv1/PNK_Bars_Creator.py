@@ -30,10 +30,18 @@ def print_myList(Movie, Dist):
     print("If you want copy last distribution name - type c")
     print("It is allowed only during distribution phase since saving Nr 1 bar")
     print()
+    print("If you want delete last inserted title - type d")
+    print()
     print("If you want finish - type s")
 
-def check_SC(text):
-    if(text !='s' and text !='c'):
+def clear_screen():
+    #for windows
+    os.system("cls")
+    #for MAC, Linux
+    #os.system("clear")
+
+def check_SD(text):
+    if(text !='s' and text !='d'):
         return True
     else:
         return False
@@ -62,13 +70,13 @@ def main():
         else:
             print("Wrong mode. Try again.")
 
+    #changing mode's type and value to help with indexing vl list
     if(mode=='f'):
         mode=5
     elif(mode=='s'):
         mode=0
     else:
         raise Exception ('Wrong mode.')
-
 
     #filling lists with Movie titles, years of production and distributions
     while text != 's':
@@ -80,23 +88,36 @@ def main():
             print()
             print("Nr", index , " title:")
             text = input("Give me Movie_Year text: ") 
-            if(check_SC(text)):
+
+            #deleting last list
+            if(text=='d'):
+                del myMovie[-1]
+                del myDist [-1]
+                i-=3
+                clear_screen()
+
+            if(check_SD(text)):
                 myMovie.append(text)   
         else:
             text = input("Give me Distrbution text: ")
+            #stop or delete statement
+            if(text=='s'or text=='d'):
+                del myMovie[-1]
+                i-=2
             #copy statement
             if(text=='c' and index>1):
-                myDist.append(myDist[index-2])
-            if(text=='s'):
-                del myMovie[-1]
-            if(check_SC(text)):
+                myDist.append(myDist[-1])
+
+            if(check_SD(text) and text !='c'):
                 myDist.append(text) 
+            clear_screen()
 
-            #for windows
-            os.system("cls")
-            #for MAC, Linux
-            #os.system("clear")
-
+    #checking if length of myMovie is equal to myDist. It is necessary 
+    if(len(myMovie)!=len(myDist)):
+        print("myMovie: ", len(myMovie))
+        print("myDist: ", len(myDist))
+        raise Exception ('Length of Movie_Year list is not equal to Distribution list.')
+        
     #setting of font
     tkinter.Frame().destroy()  
     arial7b = tkFont.Font(family='Arial', size=7, weight='bold')
