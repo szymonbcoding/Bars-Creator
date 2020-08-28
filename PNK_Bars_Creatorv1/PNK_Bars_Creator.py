@@ -1,4 +1,5 @@
 import os
+from sys import platform
 import csv
 import math
 import tkinter 
@@ -35,11 +36,14 @@ def print_myList(Movie, Dist):
     print("If you want finish - type s")
 
 def clear_screen():
-    #for windows
-    os.system("cls")
-    #for MAC, Linux
-    #os.system("clear")
-
+    
+    if platform == "win32":
+        os.system('cls')
+    elif platform == "linux" or platform == "darwin":
+        os.system('clear')
+    else:
+        raise Exception ('Not known operating system. Console can not be cleared.')
+   
 def check_SD(text):
     if(text !='s' and text !='d'):
         return True
@@ -58,7 +62,7 @@ def main():
     i=0
     text = ''
     mode = ''
-
+    
     print("Hello, PNK Bars Creator!")
     #setting film or serial mode
     while True:
