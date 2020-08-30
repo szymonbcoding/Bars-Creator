@@ -6,6 +6,37 @@ import tkinter
 from tkinter import font as tkFont
 import time
 
+DIST_DICT = { 
+'1':'20th Century Fox', 
+'2':'A24', 
+'3':'Against Gravity', 
+'4':'Aurora Films', 
+'5':'BBC', 
+'6':'Best Film', 
+'7':'Cartoon Network', 
+'8':'Columbia Pictures', 
+'9':'Disney Channel', 
+'10':'Forum Film Poland', 
+'11':'Gutek Film', 
+'12':'HBO', 
+'13':'Imperial CinePix', 
+'14':'Kino Świat', 
+'15':'Metro-Goldwyn-Mayer', 
+'16':'Monolith Films', 
+'17':'Netflix', 
+'18':'New Line Cinema', 
+'19':'Sony Pictures Entertainment', 
+'20':'Summit Entertainment', 
+'21':'Syrena EG', 
+'22':'United Artists', 
+'23':'United International Pictures', 
+'24':'Universal Pictures', 
+'25':'Vue Movie Distribution', 
+'26':'Walt Disney Pictures', 
+'27':'Warner Bros.', 
+'28':'Wiseau Films'
+} 
+
 def checkFS(text):
     if(text == 'f'or text =='s' ):
         return True
