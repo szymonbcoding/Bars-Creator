@@ -135,6 +135,10 @@ def main():
                 myMovie.append(text)   
         else:
             text = input("Give me Distrbution text: ")
+            #use distribution name map
+            if 0<math.floor(int(text))<29:
+                myDist.append(DIST_DICT[text])
+                continue
             #stop or delete statement
             if(text=='s'or text=='d'):
                 del myMovie[-1]
